@@ -1,0 +1,6 @@
+O repositório é uma camada de persistência.
+
+- Parte do projeto onde podemos efetuar ações do Banco de Dados, como:
+- Cadastramento, seleções, alterações e exclusões, por exemplo.
+
+
