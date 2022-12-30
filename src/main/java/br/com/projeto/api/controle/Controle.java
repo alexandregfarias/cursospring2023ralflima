@@ -16,7 +16,7 @@ import br.com.projeto.api.repositorio.Repositorio;
 
 @RestController
 public class Controle {
- 
+
   // O objeto Repositorio obtem as ações do banco de dados:
   // Cadastrar, Selecionar, Alterar e Excluir.
   @Autowired // Garantirá instanciação do objeto ao executar o Spring
@@ -53,20 +53,44 @@ public class Controle {
     return acao.count();
   }
 
+  @GetMapping("/api/ordenarNomes")
+  public List<Pessoa> ordenarNomes() {
+    return acao.findByOrderByNome();
+  }
+
+  @GetMapping("/api/ordenarNomes2")
+  public List<Pessoa> ordenarNomes2() {
+    return acao.findByNomeOrderByIdadeDesc("Jr.");
+  }
+
+  @GetMapping("/api/nomeContem")
+  public List<Pessoa> nomeContem() {
+    return acao.findByNomeContaining("m");
+  }
+
+  @GetMapping("/api/iniciaCom")
+  public List<Pessoa> iniciaCom() {
+    return acao.findByNomeStartsWith("m");
+  }
+
+  @GetMapping("/api/terminaCom")
+  public List<Pessoa> terminaCom() {
+    return acao.findByNomeEndsWith("a");
+  }
 
   @GetMapping("/boasvindas")
-    public String boasVindas() {
-        return "Seja bem vindo(a).";
-    }
+  public String boasVindas() {
+    return "Seja bem vindo(a).";
+  }
 
-    @GetMapping("/boasvindas/{nome}")
-    public String boasVindas(@PathVariable String nome) {
-        return "Seja bem vindo(a) " + nome;
-    }
+  @GetMapping("/boasvindas/{nome}")
+  public String boasVindas(@PathVariable String nome) {
+    return "Seja bem vindo(a) " + nome;
+  }
 
-    @PostMapping("/pessoa")
-    public Pessoa pessoa(@RequestBody Pessoa p) {
-      return p;
-    }
-    
+  @PostMapping("/pessoa")
+  public Pessoa pessoa(@RequestBody Pessoa p) {
+    return p;
+  }
+
 }

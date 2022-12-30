@@ -8,10 +8,20 @@ import org.springframework.stereotype.Repository;
 import br.com.projeto.api.modelo.Pessoa;
 
 @Repository
-public interface Repositorio extends CrudRepository<Pessoa,Integer> {
-    
+public interface Repositorio extends CrudRepository<Pessoa, Integer> {
+
     List<Pessoa> findAll();
 
     Pessoa findByCodigo(int codigo);
+
+    List<Pessoa> findByOrderByNome();
+
+    List<Pessoa> findByNomeOrderByIdadeDesc(String nome);
+
+    List<Pessoa> findByNomeContaining(String termo);
+
+    List<Pessoa> findByNomeStartsWith(String termo);
+
+    List<Pessoa> findByNomeEndsWith(String termo);
 
 }
