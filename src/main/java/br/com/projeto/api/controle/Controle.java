@@ -3,6 +3,8 @@ package br.com.projeto.api.controle;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,6 +80,16 @@ public class Controle {
     return acao.findByNomeEndsWith("a");
   }
 
+  @GetMapping("/api/somaIdades")
+  public int somaIdades() {
+    return acao.somaIdades();
+  }
+
+  @GetMapping("/api/idadeMaiorIgual")
+  public List<Pessoa> idadeMaiorIgual() {
+    return acao.idadeMaiorIgual(34);
+  }
+
   @GetMapping("/boasvindas")
   public String boasVindas() {
     return "Seja bem vindo(a).";
@@ -91,6 +103,11 @@ public class Controle {
   @PostMapping("/pessoa")
   public Pessoa pessoa(@RequestBody Pessoa p) {
     return p;
+  }
+
+  @GetMapping("/status")
+  public ResponseEntity<?> status() {
+    return new ResponseEntity<>(HttpStatus.CREATED);
   }
 
 }
