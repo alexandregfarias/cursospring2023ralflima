@@ -2,6 +2,7 @@ package br.com.projeto.api.controle;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,14 +45,13 @@ public class Controle {
   }
 
   @PutMapping("/api")
-  public Pessoa editar(@RequestBody Pessoa obj) {
-    return acao.save(obj);
+  public ResponseEntity<?> editar(@RequestBody Pessoa obj) {
+    return servico.editar(obj);
   }
 
   @DeleteMapping("/api/{codigo}")
-  public void remover(@PathVariable int codigo) {
-   // Pessoa obj = selecionarPeloCodigo(codigo);
-   // acao.delete(obj);
+  public ResponseEntity<?> remover(@PathVariable int codigo) {
+   return servico.remover(codigo);
   }
 
   @GetMapping("/api/contador")
