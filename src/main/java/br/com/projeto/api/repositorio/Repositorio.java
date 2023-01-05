@@ -31,4 +31,6 @@ public interface Repositorio extends CrudRepository<Pessoa, Integer> {
     @Query(value = "SELECT * FROM pessoas WHERE idade >= :idade", nativeQuery = true)
     List<Pessoa> idadeMaiorIgual(int idade);
 
+    int countByCodigo(int codigo);
+
 }
