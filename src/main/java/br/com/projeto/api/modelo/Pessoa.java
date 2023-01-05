@@ -13,8 +13,8 @@ public class Pessoa {
     //o @Id é responsável pela criação da Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codigo;
-    private String nome;
+    private int codigo;    
+    private String nome;    
     private int idade;
 
     public int getCodigo() {
